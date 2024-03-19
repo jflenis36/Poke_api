@@ -1,0 +1,13 @@
+.pointer {
+    cursor: pointer;
+    background-color: #3761A8;
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.pointer:hover {
+    background-color: #FFD43B;
+    color: black;
+    box-shadow: #FFD43B -5px 5px 10px;
+}

@@ -1,0 +1,14 @@
+<div routerLink="/view/{{id_pokemon}}" *ngIf="view_specific_pokemon" class="card pointer"  >
+    <div class="card-body">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ specific_pokemon.img }}" alt="">
+                </div>
+                <div class="col d-flex justify-content-end align-items-center">
+                    {{ pokemon }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container">
+    <h4>Filters</h4>
+    <form [formGroup]="form_filter">
+        <div class="row">
+            <div class="col-3"> 
+                <select formControlName="type_filter" (change)="changeTypeFilterInput()" class="form-select form-select-sm">
+                    <option value="null">Choose de filter type</option>
+                    <option value="type">Type</option>
+                    <option value="gender">Gender</option>
+                    <option value="pokemon-color">Color</option>
+                    <option value="generation">Generation</option>
+                </select>
+            </div>
+            <div *ngIf="state_type_filters" class="col-6">
+
+                <select formControlName="type"  class="form-select form-select-sm">
+                    <option value="null">Choose de filter type</option>
+                    <option *ngFor="let type of types_pokemons" value="{{ type.url }}">{{type.name}}</option>
+                </select>
+            </div>
+            <div class="col">
+                <button class="btn btn-warning" (click)="search_filters()">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <div class="div" *ngIf="!status_filter">
+        <div class="row centrar-nombres mb-5">
+            <app-targets class="m-3 col-11 col-md-5 col-lg-4 col-xl-3"  *ngFor="let pokemon of pokemons" [pokemon] = "pokemon.name"> </app-targets>
+        </div>
+        <div class="d-flex justify-content-end pe-5">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li *ngIf="current_pages.previous != null" class="page-item">
+                        <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngIf="current_pages.next != null" class="page-item">
+                        <a class="page-link" (click)="nextPage()" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="div-2" *ngIf="status_filter">
+        <div class="row centrar-nombres mb-5">
+            <app-targets class="m-3 col-11 col-md-5 col-lg-4 col-xl-3"  *ngFor="let pokemon of pokemons_filters" [pokemon] = "pokemon.name"> </app-targets>
+        </div>
+        <div class="d-flex justify-content-end pe-5">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li *ngIf="index_filters != 0" class="page-item">
+                        <a class="page-link" (click)="previousPage2()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngIf="current_pages.next != null" class="page-item">
+                        <a class="page-link" (click)="nextPage2()" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

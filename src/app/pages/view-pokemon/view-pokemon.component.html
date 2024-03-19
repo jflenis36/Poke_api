@@ -1,0 +1,85 @@
+<div *ngIf="state_find_pokemon" class="container">
+    <div class="header">
+        <div class="logo">
+            <div class="pokeball" routerLink="">
+                <div class="top"></div>
+                <div class="bottom"></div>
+                <div class="middle"></div>
+                <div class="center"></div>
+                <div class="center point"></div>
+                <div class="center withe-circle"></div>
+            </div>
+            <div class="texto" routerLink="records"> {{ getNameUpper() }} </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="pokedex">
+            <div class="poke-header">
+                <div class="circle big-circle bg-light">
+                    <div class="circle middle-circle bg-info"></div>
+                </div>
+                <div class="circle few-circle bg-danger"></div>
+                <div class="circle few-circle bg-warning"></div>
+                <div class="circle few-circle bg-success"></div>
+            </div>
+            <div class="poke-body">
+                <div class="head">
+                    <div class="circle me-1 min-circle bg-danger"></div>
+                    <div class="circle min-circle bg-danger"></div>
+                </div>
+                <div class="img">
+                    <p> {{ getNameUpper() }} </p>
+                    <img [src]="pokemon.sprites.front_default" alt="">
+                </div>
+                <div class="foot">
+                    <div class="circle middle-circlee bg-danger"></div>
+                    <div class="icon">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="poke-footer">
+                <div class="circle-big"></div>
+                <div class="center-labels">
+                    <span class="label red-label"></span>
+                    <span class="label blue-label"></span>
+                    <div class="square"></div>
+                </div>
+                <div class="pokedex-cross">
+                    <i class="icon fas fa-long-arrow-alt-left icon-left" (click)="previousPokemon()"></i>
+                    <i class="icon fas fa-long-arrow-alt-right icon-right" (click)="nextPokemon()"></i>
+                    <div class="cross-line horizontal"></div>
+                    <div class="cross-line vertical"></div>
+                    <div class="circle-center"></div>
+                    <div class="circle-square"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pokedex-information">
+            <div class="header">
+                <div class="square"></div>
+                <div class="triangule"></div>
+            </div>
+            <div class="body">
+                <p><span class="label mb-1 bg-warning fw-bolder">Height: </span> </p>
+                <p class="ms-3 mb-2">{{ pokemon.height * 10 }} cm </p>
+                <p><span class="label bg-warning fw-bolder">Weight: </span> </p>
+                <p class="ms-3 mb-2">{{ pokemon.weight }} kg </p>
+                <p><span class="label bg-warning fw-bolder">Types: </span> </p>
+                <p class="ms-3">
+                    <span *ngFor="let type of pokemon.types; let i = index">
+                        {{ type.type.name }}<span *ngIf="pokemon.types.length != i+1">, </span>
+                    </span>
+                </p>
+                <hr>
+                <div class="little-table" *ngFor="let stat of pokemon.stats">
+                    <div class="column first-column"> {{ stat.stat.name }} </div>
+                    <div class="column second-column"> {{ stat.base_stat }} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!state_find_pokemon" class="container">
+    <p>Pokemon not found</p>
+</div>
