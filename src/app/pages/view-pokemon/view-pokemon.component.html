@@ -12,6 +12,7 @@
             <div class="texto" routerLink="records"> {{ getNameUpper() }} </div>
         </div>
     </div>
+    <hr>
     <div class="body">
         <div class="pokedex">
             <div class="poke-header">
@@ -34,7 +35,7 @@
                 <div class="foot">
                     <div class="circle middle-circlee bg-danger"></div>
                     <div class="icon">
-                        <i class="fas fa-bars"></i>
+                        X
                     </div>
                 </div>
             </div>
@@ -46,8 +47,8 @@
                     <div class="square"></div>
                 </div>
                 <div class="pokedex-cross">
-                    <i class="icon fas fa-long-arrow-alt-left icon-left" (click)="previousPokemon()"></i>
-                    <i class="icon fas fa-long-arrow-alt-right icon-right" (click)="nextPokemon()"></i>
+                    <span class="icon icon-left" (click)="previousPokemon()"> {{ '<' }} </span>
+                    <span class="icon icon-right" (click)="nextPokemon()"> {{ '>' }} </span>
                     <div class="cross-line horizontal"></div>
                     <div class="cross-line vertical"></div>
                     <div class="circle-center"></div>

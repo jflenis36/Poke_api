@@ -1,13 +1,65 @@
-.pointer {
-    cursor: pointer;
-    background-color: #3761A8;
-    color: aliceblue;
-    font-size: 1.2rem;
-    font-weight: 600;
+.target {
+    border: 2px solid rgba(192, 192, 192, 0.637);
+    width: 140px;
+    height: 140px;
+    position: relative;
+    border-radius: 7px;
+    background-color: aliceblue;
+    transition: ease-out 1s linear;
 }
 
-.pointer:hover {
+.target:hover {
+    transform: scale(1.1);
+    border: 2px solid #FFD43B;
+    background-color: #3761A8;
+    box-shadow: black -5px 5px 10px;
+    cursor: pointer;
+}
+
+.target:hover .fondo-oscuro {
+    background-color: #EF5350;
     background-color: #FFD43B;
-    color: black;
-    box-shadow: #FFD43B -5px 5px 10px;
+}
+
+.target .image {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.target .image img {
+    width: 110px;
+    
+    padding: 0;
+    margin: 0;
+}
+
+.target .name-pokemon {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    z-index: 2;
+}
+
+.target .index {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 8px;
+    z-index: 2;
+}
+
+.target .fondo-oscuro {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: rgba(192, 192, 192, 0.637);
+    border-radius: 7px;
+    z-index: 1;
 }

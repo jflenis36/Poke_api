@@ -36,7 +36,6 @@ export class RecordsComponent {
       type: null
     });
     this.poke_api.getAllPokemons(this.current_pages.page).subscribe(data => {
-      console.log(data);
       this.pokemons = data.results;
       this.current_pages.next = data.next
       this.current_pages.previous = data.previous
@@ -81,10 +80,8 @@ export class RecordsComponent {
   search_filters() {
     this.changeSubtype();
     if(this.form_filter.value.type != null || this.form_filter.value.type == '') {
-      console.log(this.form_filter.value.type)
       this.poke_api.getAllPokemons(this.form_filter.value.type).subscribe(data => {
         this.total_pokemons_filters = data;
-        console.log(data);
         this.orginizeDataFilter(data, this.form_filter.value.type_filter, this.index_filters)
       });
     } else {
@@ -99,8 +96,6 @@ export class RecordsComponent {
     this.index_filters = 0;
     this.max_page_filters = 0;
     this.status_filter = false;
-    
-    console.log(this.form_filter.value.type_filter)
     if(this.form_filter.value.type_filter == null || this.form_filter.value.type_filter == 'null' ) {
       alert("Please select type filter");
       this.state_type_filters = false;
@@ -113,7 +108,6 @@ export class RecordsComponent {
       this.poke_api.PokemonsForType(this.form_filter.value.type_filter).subscribe(data => {
         this.state_type_filters = true;
         this.types_pokemons = data.results;
-        console.log(data.results);
       });
     }
   }
@@ -137,7 +131,6 @@ export class RecordsComponent {
         this.pokemons_filters = new_data;
         break;
       case 'pokemon-color':
-        console.log(data);
         this.max_page_filters = Math.ceil(this.total_pokemons_filters.pokemon_species.length / 10);
         for (let i = 0 + 10 * index; i < 10 + 10 * index; i++) {
           new_data.push(data.pokemon_species[i]);
@@ -145,7 +138,6 @@ export class RecordsComponent {
         this.pokemons_filters = new_data;
         break;
       case 'generation':
-        console.log(data);
         this.max_page_filters = Math.ceil(this.total_pokemons_filters.pokemon_species.length / 10);
         for (let i = 0 + 10 * index; i < 10 + 10 * index; i++) {
           new_data.push(data.pokemon_species[i]);
